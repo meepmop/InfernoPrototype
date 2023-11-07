@@ -13,7 +13,8 @@ label start:
 
     # player stats
     $ PlayerHP = 20
-    $ Wisdom = 10
+    $ ChrStr = 15
+    $ IntWis = 10
 
     # enemy stats
     $ EnemyHP = 10
