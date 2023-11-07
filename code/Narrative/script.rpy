@@ -5,10 +5,18 @@
 
 define c = Character("Cain")
 define d = Character("Dog")
-
 # The game starts here.
 
 label start:
+
+    # stat initialization
+
+    # player stats
+    $ PlayerHP = 20
+    $ Wisdom = 10
+
+    # enemy stats
+    $ EnemyHP = 10
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -22,17 +30,6 @@ label start:
 
     show CHcain
 
-    jump dialogue
-
-    return
-
-label dialogue:
-    # These display lines of dialogue.
-
-    c "You've created a new Ren'Py game."
-
-    c "Once you add a story, pictures, and music, you can release it to the world!"
-
-    # This ends the game.
+    jump Intro
 
     return
