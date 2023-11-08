@@ -19,7 +19,7 @@ label Intro:
 
     "You grab the blade; the familiar weight comforts you in the unknown land. You tucked the blade under your cape, and rose from the ground."
 
-    call DiceRoll from _call_DiceRoll_5
+    call DiceRoll
     $ _rollOutcome = d20
 
     if IntWis <= _rollOutcome:
@@ -47,7 +47,7 @@ label DoNotSee:
 
         "You looked down and found your leg being caught by a white tuff of fur. A small white dog has you at its jaws and biting as hard as it could on you. Weakling."
 
-        call DiceRoll from _call_DiceRoll_6
+        call DiceRoll
         $ _damageRoll = d4
         $ PlayerHP -= _damageRoll
 
@@ -62,7 +62,7 @@ label DoNotSee:
         return
 
 label SurpriseAttack:
-    call CainAttackRoll from _call_CainAttackRoll_1
+    call CainAttackRoll
 
     if ChrStr >= _rollOutcome:
         "You slowly approached the tuff, and slashed at the fluff. The tuff quickly dodged your attack, but not fast enough that it avoided your blade."

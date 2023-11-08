@@ -6,7 +6,7 @@ label DiceRoll:
     return
 
 label CainAttackRoll:
-    call DiceRoll from _call_DiceRoll
+    call DiceRoll
     $ _rollOutcome = d20
     $ _damageRoll = d6
 
@@ -20,7 +20,7 @@ label CainAttackRoll:
     return
 
 label DogAttackRoll:
-    call DiceRoll from _call_DiceRoll_1
+    call DiceRoll
     $ _rollOutcome = d20
     $ _damageRoll = d4
     $ _didEnemyLandAttack = False
@@ -34,7 +34,7 @@ label DogAttackRoll:
     return
 
 label BarkCalls:
-    call DiceRoll from _call_DiceRoll_2
+    call DiceRoll
     $ _bark = d3
     if _previousBark == None:
         $ _previousBark = _bark
