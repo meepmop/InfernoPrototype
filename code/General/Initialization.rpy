@@ -12,6 +12,7 @@ define d = Character("Dog")
 # default is used for establishing variables that will change in the future
 default PlayerHP = 20
 default ChrStr = 15
+default DexCon = 10
 default IntWis = 10
 
 # enemy stats
@@ -20,7 +21,7 @@ default EnemyHP = 10
 label start:
     #default rolls
     $ _previousBark = None
-    
+
     # places the player into the intro sequence
     jump Intro
 

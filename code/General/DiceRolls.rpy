@@ -19,6 +19,20 @@ label CainAttackRoll:
         "Attack Roll: [_rollOutcome] fail"
     return
 
+label DogAttackRoll:
+    call DiceRoll
+    $ _rollOutcome = d20
+    $ _damageRoll = d4
+    $ _didEnemyLandAttack = False
+
+    if DexCon >= _rollOutcome:
+        $ PlayerHP -= _damageRoll
+        "The attack lands! You take [_damageRoll] damage and have [PlayerHP] HP left"
+        $ _didEnemyLandAttack = True
+    else:
+        "The Dog misses."
+    return
+
 label BarkCalls:
     call DiceRoll
     $ _bark = d3
