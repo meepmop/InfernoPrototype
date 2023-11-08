@@ -1,12 +1,21 @@
 # initialization of flags
-# Calm Dog flags
-default isDogShh = False        # did you successfully shh the dog?
-## Snake Route
-default didYouHiss = False      # did you accidentally hiss at the dog?
-default areYouASnake = False    # did you go along being a snake?
-default areYouABigSnake = False # did you just admit you are a snake and start becoming one?
-# Fetch Dog flags
-default didYouLook = False      # did you try to look around to find something that can help you out?
+################################################################################
+# Calm Dog flags 
+################################################################################
+default isDogShh = False                # did you successfully shh the dog?
+## Snake Route #################################################################
+default didYouHiss = False              # did you accidentally hiss at the dog?
+default areYouASnake = False            # did you go along being a snake?
+default areYouABigSnake = False         # did you just admit you are a snake and start becoming one?
+## One of Us route #############################################################
+default didYouApproachTheDog = False    # did you try to approach the dog?
+default areYouADogToo = False           # did you lower yourself and make the dog question you?
+default areYouLyingDown= False          # are you lying down?
+################################################################################
+# Fetch Dog flags 
+################################################################################
+default didYouLook = False              # did you try to look around to find something that can help you out?
+################################################################################
 
 label PlayerMove:
     if EnemyHP > 0:
@@ -15,9 +24,11 @@ label PlayerMove:
             # basic attack
             "({b}STR{/b}: roll under [ChrStr]) Attack":
                 jump AttackEnemy
+            ################################################################################
             # Calm Dog Sequence
             "({b}CHR{/b}: roll over [ChrStr]) Try to calm the dog" if not isDogShh:
                 jump ShhDog
+            ################################################################################
             ## Failed roll: Snake Route
             "Fool the dog into thinking you're a snake" if didYouHiss:
                 jump SnakeFool
@@ -27,6 +38,19 @@ label PlayerMove:
                 jump HissLocation
             "Bite the dog" if areYouABigSnake:
                 jump BiteDog
+            ################################################################################
+            ## Success roll : One of us One of us
+            "Slowly approach dog" if isDogShh and not didYouApproachTheDog:
+                jump ApproachDog
+            "Lower yourself to the dog's height" if isDogShh and not areYouADogToo:
+                jump LowerYourself
+            "Lay on your back and show your belly like a dog" if areYouADogToo and not areYouLyingDown:
+                jump LayDown
+            "Let the dog sniff your hand" if areYouLyingDown:
+                jump SniffHand
+            "Bark at the dog" if areYouLyingDown:
+                jump BarkBark
+            ################################################################################
             # Fetch Sequence
             "({b}WIS{/b}: roll under [IntWis]) Find something that can help" if not didYouLook:
                 $ didYouLook = True
@@ -38,6 +62,9 @@ label PlayerMove:
     "{b}{i}Kill: slashed the dog to death.{/i}{/b}"
     return
 
+################################################################################
+## Attack Sequence
+################################################################################
 label AttackEnemy:
     # Player's turn
     "You attack the dog."

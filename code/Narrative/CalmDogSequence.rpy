@@ -27,7 +27,9 @@ label ShhDog:
             "You try to “Shh” the dog again, but it still comes out like a hiss. The dog is still wary of you."
         $ didYouHiss = True
         jump EnemyAttack
-
+################################################################################
+## Failing the roll choices 
+################################################################################
 label SnakeFool:
     "You puffed up your chest, and straighten your posture. Both of your hands grabbed 
     your cape and lifted your arms, to flap your cape like a viper!"
@@ -45,12 +47,12 @@ label SnakeFool:
     $ isDogShh = True
     jump PlayerMove
 
-label ChaseDog:
+label ChaseDog: # Tolerance end
     "You hone in at the dog, and ready yourself for a dash. However, as you attempt to 
     make a step towards the dog, you see it dash inside the bushes."
     "You run up to the bush, and find the dog has left the premises."
     "Remember its face, Little One. We will find it again, and make it pay for its mockery."
-    "{b}Tolerance Spare{/b}: Dog Runs Away"
+    "{b}Tolerance{/b}: Dog Runs Away"
     return
 
 label HissLocation:
@@ -60,7 +62,7 @@ label HissLocation:
     $ areYouABigSnake = True
     jump PlayerMove
 
-label BiteDog:
+label BiteDog:  # Tolerance and kill end
     "You tackle the dog, and the dog was caught by surprise. 
     With the small dog in your arms, you take a large bite at the dog."
     "You couldn’t bite hard, due to its hair that stops you from going deeper in. 
@@ -77,6 +79,65 @@ label BiteDog:
             "You set the dog down; you could see the dog peek out with one eye and closes, 
             as you placed the dog on the floor"
             "You move away and try to find your way around the forest, with a new found talent of being venomous."
-            "{b}{i}Tolerance Spare: You poisoned the dog?{/b}{/i}"
+            "{b}{i}Tolerance: You poisoned the dog?{/b}{/i}"
             return
 
+################################################################################
+## Succeeding the roll choices
+################################################################################
+label ApproachDog:
+    "You slowly approach the dog, but the dog tightens up at your advances 
+    and lets out a warning bark."
+    "You decided that it was not the best action and backed away."
+
+    $ didYouApproachTheDog = True
+    jump EnemyAttack
+label LowerYourself:
+    "You carefully lowered your body to its height, being aware of your descent to not 
+    scare the dog. Due to the small size of the dog, you had to lay on your belly to 
+    be the size of the dog."
+    "The dog perks his ears and tail up at your new size. 
+    It stopped barking and looks at you as it twist its head."
+
+    $ areYouADogToo = True
+    jump PlayerMove
+label LayDown:
+    "No. Don’t do it."
+    "You slowly twist you body, so you are lying on your back and 
+    look at the dog through upside down eyes."
+    "The dog jumped at your changed of movement, but slowly approaches you and sniff at you."
+    
+    $ areYouLyingDown = True
+    jump PlayerMove
+
+label SniffHand:    # conversion and kill end
+    "The dog jumps as you lift your hand to the dog. 
+    However, the dog warily approaches your hand and gives a delicate sniff at your hand."
+    "You could see that your hand dwarfs the dog, 
+    and you can easily grab it with a quick motion. You can end this quick."
+
+    menu BashTheDogOrSniff:
+        # Kill end
+        "Grab the dog and bash its head to the ground":
+            "You wait for the right moment to strike. As the dog nears your palm, 
+            you grab the dog with your hand, and bashed the small creature against the ground."
+            "You could not sense any motion from the dog, as it lies crushed on the ground 
+            like a swatted bug."
+            "{b}{i}Kill: swat the dog.{/i}{/b}"
+            return
+        # Conversion end
+        "Do not move":
+            "You do not do anything and wait for the dog to sniff your hand. 
+            The dog sniffs your hand, and you can feel its soft wet nose against your rough hands."
+            "It licks at your fingers. You do your best to keep your hands still, 
+            but it is difficult to fight the tickle of the fluff."
+            "You carefully twist your hand, and the dog softly headbutts your hand. The dog rubs its 
+            small head against your hand, and you reciprocate the gesture with a pat."
+            "You could feel your heart fill with joy, as the soft fur embraces your hand. 
+            In your joy, you could feel something poison inside you."
+            "We are disappointed at you."
+            "{b}{i}Conversion: Befriend through traditional means.{/i}{/b}"
+            return
+
+label BarkBark:
+    jump PlayerMove
