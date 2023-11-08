@@ -30,7 +30,7 @@ label DogAttackRoll:
         "The attack lands! You take [_damageRoll] damage and have [PlayerHP] HP left"
         $ _didEnemyLandAttack = True
     else:
-        "The Dog misses."
+        "The dog misses."
     return
 
 label BarkCalls:

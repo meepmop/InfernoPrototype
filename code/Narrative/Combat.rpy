@@ -1,9 +1,31 @@
+# initialization of flags
+# Calm Dog flags
+default isDogShh = False
+## Snake Route
+default didYouHiss = False
+default areYouASnake = False
+# Fetch Dog flags
+default didYouLook = False
+
 label PlayerMove:
-    while EnemyHP > 0:
+    if EnemyHP > 0:
         menu playerMove:
             "Your move, Little One."
+            # basic attack
             "({b}STR{/b}: roll under [ChrStr]) Attack":
                 jump AttackEnemy
+            # Calm Dog Sequence
+            "({b}CHR{/b}: roll over [ChrStr]) Try to calm the dog" if not isDogShh:
+                jump ShhDog
+            ## Snake Route
+            "Fool the dog into thinking you're a snake" if didYouHiss:
+                jump SnakeFool
+            "Run towards the dog, while flapping your cape and hissing" if areYouASnake:
+                jump ChaseDog
+            # Fetch Sequence
+            "({b}WIS{/b}: roll under [IntWis]) Find something that can help" if not didYouLook:
+                $ didYouLook = True
+                jump YouSee
 
     "You took your sword, and dealt the killing blow on the small beast. The large blade pierces the small body; the dog lies limp on the ground surrounded in a pool of blood"
     "A deserving end for a worthless creature."
@@ -45,7 +67,7 @@ label AttackEnemy:
 
 label EnemyAttack:
     # Dog's turn
-    "The Dog tries to bite you."
+    "The dog tries to bite you."
     call DogAttackRoll
     call BarkCalls
 
