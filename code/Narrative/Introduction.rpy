@@ -1,4 +1,16 @@
-label Intro:
+label Intro: 
+    # Show a background. This uses a placeholder by default, but you can
+    # add a file (named either "bg room.png" or "bg room.jpg") to the
+    # images directory to show it.
+
+    scene BGwoods
+
+    # This shows a character sprite. A placeholder is used, but you can
+    # replace it by adding a file named "eileen happy.png" to the images
+    # directory.
+
+    show CHcain
+
     # These display lines of dialogue.
 
     "You find yourself awake, nestled between the crowds of trees. They sway with joy as they watch you rise, for their saviour has finally come."
@@ -28,8 +40,6 @@ label Intro:
         "Passive Wisdom Roll: [_rollOutcome] fail"
         jump DoNotSee
 
-    # This ends the game.
-
     return
 
 label DoNotSee:
@@ -46,6 +56,8 @@ label DoNotSee:
         "You easily shook the dog off, and the dog regains its balance then barks at you, baring its small baby teeth. It has disgraced you and dared to lay a hand on you."
 
         "Finish it."
+
+        jump PlayerMove
 
         return
 
@@ -67,6 +79,8 @@ label SurpriseAttack:
         "Attack Roll: [_rollOutcome] fail"
         "You slowly approached the tuff, but the tuff noticed your advances and exited the bush."
         "The white dog barks at you, and bares its small teeth at you. Hostility will not be tolerated."
+    
+    jump PlayerMove
 
     return
 
