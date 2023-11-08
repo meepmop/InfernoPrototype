@@ -18,7 +18,9 @@ default IntWis = 10
 default EnemyHP = 10
 
 label start:
-
+    #default rolls
+    $ _previousBark = None
+    
     # places the player into the intro sequence
     jump Intro
 
