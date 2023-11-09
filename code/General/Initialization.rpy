@@ -1,4 +1,4 @@
-﻿# The script of the game goes in this file.
+﻿# The start of the game
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.

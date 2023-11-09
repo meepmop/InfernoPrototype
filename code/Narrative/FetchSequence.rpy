@@ -89,4 +89,31 @@ label FetchBoy:
         "The dog fetches the stick and brings it back, with a wagging tail."
     
     $ didDogBringBackStick = True
-    return
+    jump PlayerMove
+
+label TugOfWar:
+    "You attempt to grab the stick away from the dog, but its bite is tightened on the wood. As you try to pull the stick 
+    away from the dog, you could see the dog’s tail vigorously wag at your attempts."
+    "You could feel the dog pull at the stick, as you try to pull the stick away from it. It does not want to relent the stick to you."
+    "Don’t let the dog win this stick. Claim what is rightfully yours!"
+    menu TugOfWarDecision:
+        "Don’t let the dog win this stick. Claim what is rightfully yours!"
+        "Let the dog win and have the stick":
+            "You pull away from the stick, and let the dog have the stick. The dog wags his tail faster at this victory, 
+            and starts taking the stick to hit your leg with it."
+            "Its attacks did not hurt, and the dog looks rather cute with the stick in its mouth. The dog releases the stick after 
+            it had its fun in swatting you, sat up proudly, and smiled at you with its fluffy tail dancing behind it."
+            "The dog walks away and barks at you when you watch it move away. It quickly approaches you and bites at your cape, pulling it 
+            towards the direction of its journey. You follow the dog, as it leashes you with your cape."
+            "This is an embarrassment, Little One, for you have become the dog’s pet."
+            "{b}{i}Conversion: Become Beta{/i}{/b}"
+            return
+        "Win this tug of war":
+            "Due to the strength of the dog, you easily won the war by lifting the stick with the dog on it. The dog did not release 
+            the stick when you clearly have defeated the dog in the show of power."
+            "You lowered the dog on a stick down, and the dog released the stick then growled at you. 
+            It did not like you winning, and looks angry due to its wounded pride."
+            
+            $ didDogBringBackStick = False
+
+            jump EnemyAttack

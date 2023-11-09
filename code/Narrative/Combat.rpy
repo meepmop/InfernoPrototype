@@ -26,6 +26,10 @@ default didDogBringBackStick = False    # did the dog bring back the stick you t
 ################################################################################
 
 label PlayerMove:
+    if PlayerHP <= 0:
+        "You could feel the world turning dark and grow cold..."
+        "No... not again..."
+        return
     if EnemyHP > 0:
         menu playerMove:
             "Your move, Little One."
@@ -34,7 +38,7 @@ label PlayerMove:
                 jump AttackEnemy
             ################################################################################
             # Calm Dog Sequence
-            "({b}CHR{/b}: roll over [ChrStr]) Try to calm the dog" if not isDogShh:
+            "({b}CHR{/b}: roll over [ChrStr]) Try to calm the dog" if not isDogShh and not didDogBringBackStick:
                 jump ShhDog
             ################################################################################
             ## Failed roll: Snake Route
@@ -64,16 +68,18 @@ label PlayerMove:
             # Fetch Sequence
             "({b}WIS{/b}: roll under [IntWis]) Find something that can help" if not didYouLook:
                 jump YouSee
-            "Lure the dog with the stick and throw the stick in the river" if didYouLook and doYouSeeRiver:
+            "Lure the dog with the stick and throw the stick in the river" if didYouLook and doYouSeeRiver and not didDogBringBackStick:
                 jump DogToRiver
-            "Throw the stick at the dog" if didYouLook and not doYouHaveBigStick:
+            "Throw the stick at the dog" if didYouLook and not doYouHaveBigStick and not didDogBringBackStick:
                 jump StickAtDog
             "({b}STR{/b}: roll under [ChrStr]) Throw the stick at the dog" if didYouLook and not doYouSeeRiver:
                 jump StickAtDog
-            "Throw the stick into the forest" if didYouLook and not doYouHaveBigStick:
+            "Throw the stick into the forest" if didYouLook and not doYouHaveBigStick and not didDogBringBackStick:
                 jump FetchBoy
             "({b}STR{/b}: roll under [ChrStr]) Throw the stick into the forest" if didYouLook and doYouHaveBigStick:
                 jump FetchBoy
+            "Grab the stick from the dog" if didDogBringBackStick:
+                jump TugOfWar
 
     "You took your sword, and dealt the killing blow on the small beast. The large blade pierces 
     the small body; the dog lies limp on the ground surrounded in a pool of blood"

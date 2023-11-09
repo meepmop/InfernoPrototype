@@ -70,6 +70,7 @@ label BiteDog:  # Tolerance and kill end
     "In your hands, the dog falls limp, but you could feel its panicked breaths from the movement of its stomach."
 
     menu ToKillOrNot:
+        "In your hands, the dog falls limp, but you could feel its panicked breaths from the movement of its stomach."
         "End the dog":
             "You take the small head of the dog, and twist it. You could hear a sharp crack and the breathing stops."
             "A small death, for a small nuisance."
