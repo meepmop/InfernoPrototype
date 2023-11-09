@@ -140,4 +140,30 @@ label SniffHand:    # conversion and kill end
             return
 
 label BarkBark:
+    "You try to mimic the small barks the dog gives, but it comes out a 
+    bit too gruff for your taste."
+    "What are you doing?! This is not befitting you!"
+    "You hope that your barks did not sound too gruff, and the dog responds 
+    to you with a bark. A good response as the dog does not attempt to attack you. 
+    You bark at the dog, and it barks as well, to form a one-sided conversation from 
+    both sides."
+    "Stop this playing and kill it. Don’t degrade yourself anymore for it."
+    "The dog goes around you, and sniffs your butt, then comes back towards your 
+    face and turns around to show its own. The tail lifts up, and you could see 
+    speckles of brown on its bottom – you can tell that is not soil as it gives out a 
+    pungent smell."
+    "Don’t. you. dare."
+
+    $ didYouBark = True
+
     jump PlayerMove
+
+label DogAssWhiff:  # conversion end
+    "You pray to no God that can answer you back, as you took a deep breath of the dog’s butt.
+    It takes your whole body to prevent yourself from puking at the white fluff."
+    "You manage to hold the position as long as you could, and God has placed mercy upon you 
+    as the dog turns away and gave you a lively bark. The dog runs around you in circles, 
+    and it has seemed that you have gained a new friend."
+    "No friend is worth the cost of your pride, Little One…"
+    "{b}{i}Conversion: You sniffed a dog’s ass.{/i}{/b}"
+    return

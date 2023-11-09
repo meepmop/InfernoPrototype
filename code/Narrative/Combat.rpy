@@ -11,6 +11,7 @@ default areYouABigSnake = False         # did you just admit you are a snake and
 default didYouApproachTheDog = False    # did you try to approach the dog?
 default areYouADogToo = False           # did you lower yourself and make the dog question you?
 default areYouLyingDown= False          # are you lying down?
+default didYouBark = False              # did you just bark at the dog?
 ################################################################################
 # Fetch Dog flags 
 ################################################################################
@@ -40,7 +41,7 @@ label PlayerMove:
                 jump BiteDog
             ################################################################################
             ## Success roll : One of us One of us
-            "Slowly approach dog" if isDogShh and not didYouApproachTheDog:
+            "Slowly approach dog" if isDogShh and not didYouApproachTheDog and not areYouLyingDown:
                 jump ApproachDog
             "Lower yourself to the dog's height" if isDogShh and not areYouADogToo:
                 jump LowerYourself
@@ -48,8 +49,10 @@ label PlayerMove:
                 jump LayDown
             "Let the dog sniff your hand" if areYouLyingDown:
                 jump SniffHand
-            "Bark at the dog" if areYouLyingDown:
+            "Bark at the dog" if areYouLyingDown and not didYouBark:
                 jump BarkBark
+            "Sniff the dog's butt" if didYouBark:
+                jump DogAssWhiff
             ################################################################################
             # Fetch Sequence
             "({b}WIS{/b}: roll under [IntWis]) Find something that can help" if not didYouLook:
