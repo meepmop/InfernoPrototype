@@ -42,9 +42,9 @@ label PlayerMove:
                 jump ShhDog
             ################################################################################
             ## Failed roll: Snake Route
-            "Fool the dog into thinking you're a snake" if didYouHiss:
+            "Fool the dog into thinking you're a snake" if didYouHiss and not areYouASnake and not areYouABigSnake:
                 jump SnakeFool
-            "Run towards the dog, while flapping your cape and hissing" if areYouASnake:
+            "Run towards the dog, while flapping your cape and hissing" if areYouASnake and not areYouABigSnake:
                 jump ChaseDog
             "Continue flapping and hissing" if areYouASnake and not areYouABigSnake:
                 jump HissLocation
@@ -52,9 +52,9 @@ label PlayerMove:
                 jump BiteDog
             ################################################################################
             ## Success roll : One of us One of us
-            "Slowly approach dog" if isDogShh and not didYouApproachTheDog and not areYouLyingDown:
+            "Slowly approach dog" if isDogShh and not didYouApproachTheDog and not areYouLyingDown and not areYouASnake and not areYouABigSnake:
                 jump ApproachDog
-            "Lower yourself to the dog's height" if isDogShh and not areYouADogToo:
+            "Lower yourself to the dog's height" if isDogShh and not areYouADogToo and not areYouASnake and not areYouABigSnake:
                 jump LowerYourself
             "Lay on your back and show your belly like a dog" if areYouADogToo and not areYouLyingDown:
                 jump LayDown
@@ -68,19 +68,19 @@ label PlayerMove:
             # Fetch Sequence
             "({b}WIS{/b}: roll under [IntWis]) Find something that can help" if not didYouLook:
                 jump YouSee
-            "Lure the dog with the stick and throw the stick in the river" if didYouLook and doYouSeeRiver and not didDogBringBackStick:
+            "Lure the dog with the stick and throw the stick in the river" if didYouLook and doYouSeeRiver and not didDogBringBackStick and not areYouLyingDown:
                 jump DogToRiver
-            "Throw the stick at the dog" if didYouLook and not doYouHaveBigStick and not didDogBringBackStick:
+            "Throw the stick at the dog" if didYouLook and not doYouHaveBigStick and not didDogBringBackStick and not areYouLyingDown and not didDogBringBackStick:
                 jump StickAtDog
-            "({b}STR{/b}: roll under [ChrStr]) Throw the stick at the dog" if didYouLook and not doYouSeeRiver:
+            "({b}STR{/b}: roll under [ChrStr]) Throw the stick at the dog" if didYouLook and not doYouSeeRiver and not areYouLyingDown and not didDogBringBackStick:
                 jump StickAtDog
-            "Throw the stick into the forest" if didYouLook and not doYouHaveBigStick and not didDogBringBackStick:
+            "Throw the stick into the forest" if didYouLook and not doYouHaveBigStick and not didDogBringBackStick and not areYouLyingDown and not didDogBringBackStick:
                 jump FetchBoy
-            "({b}STR{/b}: roll under [ChrStr]) Throw the stick into the forest" if didYouLook and doYouHaveBigStick:
+            "({b}STR{/b}: roll under [ChrStr]) Throw the stick into the forest" if didYouLook and doYouHaveBigStick and not areYouLyingDown and not didDogBringBackStick:
                 jump FetchBoy
             "Grab the stick from the dog" if didDogBringBackStick:
                 jump TugOfWar
-
+    # You killed the Dog
     "You took your sword, and dealt the killing blow on the small beast. The large blade pierces 
     the small body; the dog lies limp on the ground surrounded in a pool of blood"
     "A deserving end for a worthless creature."

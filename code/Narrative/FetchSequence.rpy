@@ -66,10 +66,17 @@ label StickAtDog:   # Kill end
 
 label LargeStickFailure:
     $ PlayerHP -= _damageRoll
+    # if PlayerHp is lower than 0, make it 0
+    if PlayerHP <= 0:
+        $ PlayerHP = 0
     "You try to pick up the stick, but you feel a crack in your body when you try to lift it. 
     Something broke inside you, and it was the fault of your hubris."
     "You take [_damageRoll] damage from the stick, and have [PlayerHP] HP left"
 
+    # Death from stick
+    if PlayerHP <= 0:
+        jump PlayerMove
+        
     jump EnemyAttack
     
 label FetchBoy:

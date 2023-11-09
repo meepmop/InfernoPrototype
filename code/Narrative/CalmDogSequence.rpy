@@ -118,6 +118,7 @@ label SniffHand:    # conversion and kill end
     and you can easily grab it with a quick motion. You can end this quick."
 
     menu BashTheDogOrSniff:
+        "You could see that your hand dwarfs the dog, and you can easily grab it with a quick motion. You can end this quick."
         # Kill end
         "Grab the dog and bash its head to the ground":
             "You wait for the right moment to strike. As the dog nears your palm, 
