@@ -22,6 +22,7 @@ default didYouBark = False              # did you just bark at the dog?
 default didYouLook = False              # did you try to look around to find something that can help you out?
 default doYouHaveBigStick = False       # do you have a big stick?
 default doYouSeeRiver = False           # do you see a river?
+default didDogBringBackStick = False    # did the dog bring back the stick you threw?
 ################################################################################
 
 label PlayerMove:
@@ -68,8 +69,10 @@ label PlayerMove:
             "Throw the stick at the dog" if didYouLook and not doYouHaveBigStick:
                 jump StickAtDog
             "({b}STR{/b}: roll under [ChrStr]) Throw the stick at the dog" if didYouLook and not doYouSeeRiver:
-                jump LargeStickAtDog
+                jump StickAtDog
             "Throw the stick into the forest" if didYouLook and not doYouHaveBigStick:
+                jump FetchBoy
+            "({b}STR{/b}: roll under [ChrStr]) Throw the stick into the forest" if didYouLook and doYouHaveBigStick:
                 jump FetchBoy
 
     "You took your sword, and dealt the killing blow on the small beast. The large blade pierces 

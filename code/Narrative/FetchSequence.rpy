@@ -35,33 +35,33 @@ label DogToRiver:   # Kill End
     "{b}{i}Kill: killed the dog using nature.{/b}{/i}"
     return
 
-label StickAtDog:
-    call DiceRoll
-    $ _damageRoll = d4
-    $ EnemyHP -=_damageRoll
-    if EnemyHP <= 0 :
-        $ EnemyHP = 0
+label StickAtDog:   # Kill end
+    if doYouHaveBigStick:
+        call LargeStickGamble
 
-    "You threw the stick at the dog, and the dog received [_damageRoll]. 
-    the dog has [EnemyHP] HP left. You could tell that this made it angry."
+        if _largeSuccess:
+            "Due to the large size of the stick, the dog got crushed by the stick and 
+            you could not see a hint of white underneath the log. In the silence, you 
+            could hear the woods cheer at the act of your destruction."
+            "{b}{i}Kill: the dog is crushed under the large stick.{/b}{/i}"
+        else:
+            jump LargeStickFailure 
+    else: 
+        call DiceRoll
+        $ _damageRoll = d4
+        $ EnemyHP -=_damageRoll
+        if EnemyHP <= 0 :
+            $ EnemyHP = 0
 
-    $ isDogAngry = True
-    $ didYouLook = False
-    $ doYouSeeRiver = False
+        "You threw the stick at the dog, and the dog received [_damageRoll]. 
+        the dog has [EnemyHP] HP left. You could tell that this made it angry."
 
-    jump EnemyAttack
+        $ isDogAngry = True
+        $ didYouLook = False
+        $ doYouSeeRiver = False
 
-
-label LargeStickAtDog: # Kill end
-    call LargeStickGamble
-
-    if _largeSuccess:
-        "Due to the large size of the stick, the dog got crushed by the stick and 
-        you could not see a hint of white underneath the log. In the silence, you 
-        could hear the woods cheer at the act of your destruction."
-        "{b}{i}Kill: the dog is crushed under the large stick.{/b}{/i}"
-    else:
-        jump LargeStickFailure 
+        jump EnemyAttack
+    
     return
 
 label LargeStickFailure:
@@ -73,5 +73,20 @@ label LargeStickFailure:
     jump EnemyAttack
     
 label FetchBoy:
-    "You threw the stick towards the woods, and the dog runs towards the direction of the thrown stick."
+    if doYouHaveBigStick:
+        call LargeStickGamble
+        
+        if _largeSuccess:
+            "You threw the stick towards the woods, and the dog runs towards the direction of the thrown stick."
+            "You don’t believe that the dog will be able to bring the large stick back. 
+            However, after a few minutes, you could see that a small tuff of white emerge 
+            from the bushes."
+            "The small dog drags the large stick out of the bush, and slowly brings you the large stick back."
+        else:
+            jump LargeStickFailure
+    else:
+        "You threw the stick towards the woods, and the dog runs towards the direction of the thrown stick."
+        "The dog fetches the stick and brings it back, with a wagging tail."
+    
+    $ didDogBringBackStick = True
     return

@@ -2,6 +2,7 @@ label DiceRoll:
     $ d3 = renpy.random.randint(1,3)
     $ d4 = renpy.random.randint(1,4)
     $ d6 = renpy.random.randint(1,6)
+    $ d10 = renpy.random.randint(1,10)
     $ d20 = renpy.random.randint(1,20)
     return
 
@@ -47,7 +48,7 @@ label BarkCalls:
 label LargeStickGamble:
     call DiceRoll
     $ _rollOutcome = d20
-    $ _damageRoll = d6
+    $ _damageRoll = d10
 
     if ChrStr >= _rollOutcome:
         "Strength Roll: [_rollOutcome] success"
