@@ -51,24 +51,27 @@ label StickAtDog:
 
     jump EnemyAttack
 
+
 label LargeStickAtDog: # Kill end
-    call DiceRoll
-    $ _rollOutcome = d20
-    $ _damageRoll = d6
-    
-    if ChrStr >= _rollOutcome:
-        "Strength Roll: [_rollOutcome] success"
+    call LargeStickGamble
+
+    if _largeSuccess:
         "Due to the large size of the stick, the dog got crushed by the stick and 
         you could not see a hint of white underneath the log. In the silence, you 
         could hear the woods cheer at the act of your destruction."
         "{b}{i}Kill: the dog is crushed under the large stick.{/b}{/i}"
     else:
-        "Strength Roll: [_rollOutcome] fail"
-        $ PlayerHP -= _damageRoll
-        "You try to pick up the stick, but you feel a crack in your body when you try to lift it. 
-        Something broke inside you, and it was the fault of your hubris."
-        "You take [_damageRoll] damage from the stick, and have [PlayerHP] HP left"
-        jump EnemyAttack
+        jump LargeStickFailure 
     return
-    
 
+label LargeStickFailure:
+    $ PlayerHP -= _damageRoll
+    "You try to pick up the stick, but you feel a crack in your body when you try to lift it. 
+    Something broke inside you, and it was the fault of your hubris."
+    "You take [_damageRoll] damage from the stick, and have [PlayerHP] HP left"
+
+    jump EnemyAttack
+    
+label FetchBoy:
+    "You threw the stick towards the woods, and the dog runs towards the direction of the thrown stick."
+    return

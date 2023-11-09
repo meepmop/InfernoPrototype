@@ -69,6 +69,8 @@ label PlayerMove:
                 jump StickAtDog
             "({b}STR{/b}: roll under [ChrStr]) Throw the stick at the dog" if didYouLook and not doYouSeeRiver:
                 jump LargeStickAtDog
+            "Throw the stick into the forest" if didYouLook and not doYouHaveBigStick:
+                jump FetchBoy
 
     "You took your sword, and dealt the killing blow on the small beast. The large blade pierces 
     the small body; the dog lies limp on the ground surrounded in a pool of blood"

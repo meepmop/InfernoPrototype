@@ -43,3 +43,17 @@ label BarkCalls:
     else:
         $ _previousBark = _bark
     return
+
+label LargeStickGamble:
+    call DiceRoll
+    $ _rollOutcome = d20
+    $ _damageRoll = d6
+
+    if ChrStr >= _rollOutcome:
+        "Strength Roll: [_rollOutcome] success"
+        $ _largeSuccess = True
+
+    else:
+        "Strength Roll: [_rollOutcome] fail"
+        $ _largeSuccess = False
+    return
