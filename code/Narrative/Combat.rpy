@@ -1,5 +1,9 @@
 # initialization of flags
 ################################################################################
+# Attack flags
+################################################################################
+default isDogAngry = False              # di you make the dog angry?
+################################################################################
 # Calm Dog flags 
 ################################################################################
 default isDogShh = False                # did you successfully shh the dog?
@@ -16,6 +20,8 @@ default didYouBark = False              # did you just bark at the dog?
 # Fetch Dog flags 
 ################################################################################
 default didYouLook = False              # did you try to look around to find something that can help you out?
+default doYouHaveBigStick = False       # do you have a big stick?
+default doYouSeeRiver = False           # do you see a river?
 ################################################################################
 
 label PlayerMove:
@@ -56,8 +62,13 @@ label PlayerMove:
             ################################################################################
             # Fetch Sequence
             "({b}WIS{/b}: roll under [IntWis]) Find something that can help" if not didYouLook:
-                $ didYouLook = True
                 jump YouSee
+            "Lure the dog with the stick and throw the stick in the river" if didYouLook and doYouSeeRiver:
+                jump DogToRiver
+            "Throw the stick at the dog" if didYouLook and not doYouHaveBigStick:
+                jump StickAtDog
+            "({b}STR{/b}: roll under [ChrStr]) Throw the stick at the dog" if didYouLook and not doYouSeeRiver:
+                jump LargeStickAtDog
 
     "You took your sword, and dealt the killing blow on the small beast. The large blade pierces 
     the small body; the dog lies limp on the ground surrounded in a pool of blood"
