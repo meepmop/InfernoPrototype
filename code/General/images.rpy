@@ -22,11 +22,16 @@ transform Right:
 # Character Appearance Calls
 ################################################################################
 # Cain on the Left
+
+label CainLeftIntro:
+    show CHcain at left with dissolve
+    return
+
 label CainLeft:
     show CHcain at Left
     return
 
 # Dog on the Right
 label DogRight:
-    show CHDog at Right 
+    show CHDog at Right with easeinbottom
     return
