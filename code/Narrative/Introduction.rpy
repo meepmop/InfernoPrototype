@@ -1,3 +1,6 @@
+# initialization of Flags
+default wasDogSpotted = False   # did you spot the dog?
+
 label Intro: 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -9,7 +12,7 @@ label Intro:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show CHcain
+    call CainLeft
 
     # These display lines of dialogue.
     "Trigger Warning: Based on the player's choices, this demo may contain animal death and animal cruelty. This demo may be disturbing to players and players' discretion advised."
@@ -29,6 +32,11 @@ label Intro:
         "Passive Wisdom Roll: [_rollOutcome] success"
         
         "You sense a shiver on the bush before you. At a closer inspection, you find something that does not belong in the sea of leaves."
+
+        # Dog portraits come up
+        call DogRight
+        # Dog was spotted
+        $ wasDogSpotted = True
         
         "A small tuff of fur hides in the cover of the bushes, and emits a silent growl. The air thins and awaits your decision."
 
@@ -52,6 +60,9 @@ label Intro:
 # what happens when players don't see anything
 label DoNotSee:
         "You look around, trying to find out where you have landed. However, an orb speeds towards you and you can feel a sharp piercing wound on your leg."
+
+        if wasDogSpotted == False:
+            call DogRight
 
         "You looked down and found your leg being caught by a white tuff of fur. A small white dog has you at its jaws and biting as hard as it could on you. Weakling."
 
