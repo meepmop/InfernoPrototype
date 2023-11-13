@@ -12,6 +12,8 @@ label Intro:
     show CHcain
 
     # These display lines of dialogue.
+    "Trigger Warning: Based on the player's choices, this demo may contain animal death and animal cruelty. This demo may be disturbing to players and players' discretion advised."
+
     "You find yourself awake, nestled between the crowds of trees. They sway with joy as they watch you rise, for their saviour has finally come."
 
     "You looked around and found a large claymore beside you. The blade shines in the dark forest, like a lantern to guide you in the darkness."
