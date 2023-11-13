@@ -56,7 +56,7 @@ label BarkCalls:
 
 # large stick rolls for large stick causes
 label LargeStickGamble:
-    call DiceRoll
+    call DiceRoll from _call_DiceRoll_7
     $ _rollOutcome = d20
     $ _damageRoll = d10
 

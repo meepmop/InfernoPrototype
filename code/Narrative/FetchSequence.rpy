@@ -37,7 +37,7 @@ label DogToRiver:   # Kill End
 
 label StickAtDog:   # Kill end
     if doYouHaveBigStick:
-        call LargeStickGamble
+        call LargeStickGamble from _call_LargeStickGamble
 
         if _largeSuccess:
             "Due to the large size of the stick, the dog got crushed by the stick and 
@@ -47,7 +47,7 @@ label StickAtDog:   # Kill end
         else:
             jump LargeStickFailure 
     else: 
-        call DiceRoll
+        call DiceRoll from _call_DiceRoll_8
         $ _damageRoll = d4
         $ EnemyHP -=_damageRoll
         if EnemyHP <= 0 :
@@ -81,7 +81,7 @@ label LargeStickFailure:
     
 label FetchBoy:
     if doYouHaveBigStick:
-        call LargeStickGamble
+        call LargeStickGamble from _call_LargeStickGamble_1
         
         if _largeSuccess:
             "You threw the stick towards the woods, and the dog runs towards the direction of the thrown stick."
