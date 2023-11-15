@@ -40,3 +40,11 @@ label DogRight:
 label DogDeath:
     hide CHDog with easeoutbottom
     return
+
+# Dog Leaves the scene
+label DogLeaves:
+    hide CHDog with easeoutright
+    return
+
+label DogComesBack:
+    show CHDog at Right with easeinright

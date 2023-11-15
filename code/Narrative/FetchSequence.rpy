@@ -27,6 +27,7 @@ label YouSee:
 label DogToRiver:   # Kill End
     "You wiggle the stick in front of the dog, and the dog follows the movement of the stick. 
     While you have the dog entranced, you lift the stick and throw it towards the rushing river."
+    call DogLeaves
     "The dog bolts towards the direction of the stick and you lost sight of the dog. You hear a loud splash, 
     and hurry towards the sound."
     "When you reached the river, you do not see the dog but only a stick that quickly flows away from you. 
@@ -85,16 +86,20 @@ label FetchBoy:
         call LargeStickGamble from _call_LargeStickGamble_1
         
         if _largeSuccess:
+            call DogLeaves
             "You threw the stick towards the woods, and the dog runs towards the direction of the thrown stick."
             "You don’t believe that the dog will be able to bring the large stick back. 
             However, after a few minutes, you could see that a small tuff of white emerge 
             from the bushes."
+            call DogComesBack
             "The small dog drags the large stick out of the bush, and slowly brings you the large stick back."
         else:
             jump LargeStickFailure
     else:
+        call DogLeaves
         "You threw the stick towards the woods, and the dog runs towards the direction of the thrown stick."
         "The dog fetches the stick and brings it back, with a wagging tail."
+        call DogComesBack
     
     $ didDogBringBackStick = True
     jump PlayerMove
