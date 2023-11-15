@@ -40,6 +40,7 @@ label StickAtDog:   # Kill end
         call LargeStickGamble from _call_LargeStickGamble
 
         if _largeSuccess:
+            call DogDeath
             "Due to the large size of the stick, the dog got crushed by the stick and 
             you could not see a hint of white underneath the log. In the silence, you 
             could hear the woods cheer at the act of your destruction."

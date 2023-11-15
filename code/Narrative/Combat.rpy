@@ -81,6 +81,7 @@ label PlayerMove:
             "Grab the stick from the dog" if didDogBringBackStick:
                 jump TugOfWar
     # You killed the Dog
+    call DogDeath    # Dog Death animation
     "You took your sword, and dealt the killing blow on the small beast. The large blade pierces 
     the small body; the dog lies limp on the ground surrounded in a pool of blood"
     "A deserving end for a worthless creature."

@@ -73,6 +73,7 @@ label BiteDog:  # Tolerance and kill end
         "In your hands, the dog falls limp, but you could feel its panicked breaths from the movement of its stomach."
         "End the dog":
             "You take the small head of the dog, and twist it. You could hear a sharp crack and the breathing stops."
+            call DogDeath
             "A small death, for a small nuisance."
             "{b}{i}Kill: killed the dog through a twist.{/b}{/i}"
             return
@@ -98,7 +99,7 @@ label LowerYourself:
     scare the dog. Due to the small size of the dog, you had to lay on your belly to 
     be the size of the dog."
     "The dog perks his ears and tail up at your new size. 
-    It stopped barking and looks at you as it twist its head."
+    It stopped barking and looks at you as it tilts its head."
 
     $ areYouADogToo = True
     jump PlayerMove
@@ -123,6 +124,7 @@ label SniffHand:    # conversion and kill end
         "Grab the dog and bash its head to the ground":
             "You wait for the right moment to strike. As the dog nears your palm, 
             you grab the dog with your hand, and bashed the small creature against the ground."
+            call DogDeath
             "You could not sense any motion from the dog, as it lies crushed on the ground 
             like a swatted bug."
             "{b}{i}Kill: swat the dog.{/i}{/b}"

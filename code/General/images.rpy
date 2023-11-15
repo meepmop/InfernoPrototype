@@ -35,3 +35,8 @@ label CainLeft:
 label DogRight:
     show CHDog at Right with easeinbottom
     return
+
+# Dog Death
+label DogDeath:
+    hide CHDog with easeoutbottom
+    return
