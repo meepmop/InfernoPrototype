@@ -21,8 +21,9 @@ transform Right:
 ################################################################################
 # Character Appearance Calls
 ################################################################################
+# Cain
+################################################################################
 # Cain on the Left
-
 label CainLeftIntro:
     show CHcain at left with dissolve
     return
@@ -30,6 +31,14 @@ label CainLeftIntro:
 label CainLeft:
     show CHcain at Left
     return
+
+label CainDeath:
+    hide CHcain with easeoutbottom
+    return
+
+################################################################################
+# Dog
+################################################################################
 
 # Dog on the Right
 label DogRight:

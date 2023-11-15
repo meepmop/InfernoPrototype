@@ -26,7 +26,9 @@ default didDogBringBackStick = False    # did the dog bring back the stick you t
 ################################################################################
 
 label PlayerMove:
-    if PlayerHP <= 0:
+    if PlayerHP <= 30:
+        call CainDeath
+        show black with fade
         "You could feel the world turning dark and grow cold..."
         "No... not again..."
         return
