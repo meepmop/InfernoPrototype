@@ -8,6 +8,7 @@ label Intro:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
+    call ForestMusic
     scene BGwoods with fade
 
     # This shows a character sprite. A placeholder is used, but you can

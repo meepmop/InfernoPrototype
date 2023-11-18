@@ -26,8 +26,11 @@ default didDogBringBackStick = False    # did the dog bring back the stick you t
 ################################################################################
 
 label PlayerMove:
+
+    call CombatMusic
     if PlayerHP <= 0:
         call CainDeath
+        stop music fadeout 1.0
         show black with fade
         "You could feel the world turning dark and grow cold..."
         "No... not again..."
@@ -84,6 +87,7 @@ label PlayerMove:
                 jump TugOfWar
     # You killed the Dog
     call DogDeath    # Dog Death animation
+    call KillMusic
     "You took your sword, and dealt the killing blow on the small beast. The large blade pierces 
     the small body; the dog lies limp on the ground surrounded in a pool of blood"
     "A deserving end for a worthless creature."
