@@ -59,6 +59,7 @@ label StickAtDog:   # Kill end
             "You threw the stick at the dog, and the dog received [_damageRoll]. 
             the dog has [EnemyHP] HP left."
             "The dog falls limp at your last attack, and there was no sign that it is about to get up. You approach the dog, and you could hear it softly breathing."
+            call DogDeath
             menu ToBeatOrNot:
                 "You have done well -- Finish it."
                 "Kill the dog":
