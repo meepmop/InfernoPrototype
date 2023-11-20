@@ -8,14 +8,14 @@ label Intro:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    call ForestMusic
+    call ForestMusic from _call_ForestMusic
     scene BGwoods with fade
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    call CainLeftIntro
+    call CainLeftIntro from _call_CainLeftIntro
 
     # These display lines of dialogue.
 
@@ -36,7 +36,7 @@ label Intro:
         "You sense a shiver on the bush before you. At a closer inspection, you find something that does not belong in the sea of leaves."
 
         # Dog portraits come up
-        call DogRight
+        call DogRight from _call_DogRight
         # Dog was spotted
         $ wasDogSpotted = True
         
@@ -64,7 +64,7 @@ label DoNotSee:
         "You look around, trying to find out where you have landed. However, an orb speeds towards you and you can feel a sharp piercing wound on your leg."
 
         if wasDogSpotted == False:
-            call DogRight
+            call DogRight from _call_DogRight_1
 
         "You looked down and found your leg being caught by a white tuff of fur. A small white dog has you at its jaws and biting as hard as it could on you. Weakling."
 
@@ -74,6 +74,7 @@ label DoNotSee:
         # damage deduction from player's max hp
         $ PlayerHP -= _damageRoll
 
+        call CainHurt
         "You take [_damageRoll] damage and have [PlayerHP] HP left"
 
         "You easily shook the dog off, and the dog regains its balance then barks at you, baring its small baby teeth. It has disgraced you and dared to lay a hand on you."
@@ -92,6 +93,7 @@ label SurpriseAttack:
 
     if ChrStr >= _rollOutcome:
         "You slowly approached the tuff, and slashed at the fluff. The tuff quickly dodged your attack, but not fast enough that it avoided your blade."
+        call DogHurt
         "The dog takes the hit and receives [_damageRoll]; the dog has [EnemyHP] HP left."
         "How unfortunate. It must suffer now for its disobedience."
     else:

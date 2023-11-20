@@ -48,7 +48,7 @@ label SnakeFool:
     jump PlayerMove
 
 label ChaseDog: # Tolerance end
-    call DogLeaves
+    call DogLeaves from _call_DogLeaves
     "You hone in at the dog, and ready yourself for a dash. However, as you attempt to 
     make a step towards the dog, you see it dash inside the bushes."
     "You run up to the bush, and find the dog has left the premises."
@@ -68,7 +68,7 @@ label BiteDog:  # Tolerance and kill end
     With the small dog in your arms, you take a large bite at the dog."
     "You couldn’t bite hard, due to its hair that stops you from going deeper in. 
     However, it seemed powerful enough as the dog yowls in pain and faints."
-    call DogDeath
+    call DogDeath from _call_DogDeath
     "In your hands, the dog falls limp, but you could feel its panicked breaths from the movement of its stomach."
 
     menu ToKillOrNot:
@@ -125,7 +125,7 @@ label SniffHand:    # conversion and kill end
         "Grab the dog and bash its head to the ground":
             "You wait for the right moment to strike. As the dog nears your palm, 
             you grab the dog with your hand, and bashed the small creature against the ground."
-            call DogDeath
+            call DogDeath from _call_DogDeath_1
             "You could not sense any motion from the dog, as it lies crushed on the ground 
             like a swatted bug."
             "{b}{i}Kill: swat the dog.{/i}{/b}"

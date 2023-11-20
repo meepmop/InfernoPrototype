@@ -27,7 +27,7 @@ label YouSee:
 label DogToRiver:   # Kill End
     "You wiggle the stick in front of the dog, and the dog follows the movement of the stick. 
     While you have the dog entranced, you lift the stick and throw it towards the rushing river."
-    call DogLeaves
+    call DogLeaves from _call_DogLeaves_1
     "The dog bolts towards the direction of the stick and you lost sight of the dog. You hear a loud splash, 
     and hurry towards the sound."
     "When you reached the river, you do not see the dog but only a stick that quickly flows away from you. 
@@ -41,7 +41,7 @@ label StickAtDog:   # Kill end
         call LargeStickGamble from _call_LargeStickGamble
 
         if _largeSuccess:
-            call DogDeath
+            call DogDeath from _call_DogDeath_3
             "Due to the large size of the stick, the dog got crushed by the stick and 
             you could not see a hint of white underneath the log. In the silence, you 
             could hear the woods cheer at the act of your destruction."
@@ -52,8 +52,24 @@ label StickAtDog:   # Kill end
         call DiceRoll from _call_DiceRoll_8
         $ _damageRoll = d4
         $ EnemyHP -=_damageRoll
+        call DogHurt
         if EnemyHP <= 0 :
             $ EnemyHP = 0
+            "You gathered all your strength and dealt the final blow on the dog. The stick connects to the dog's head and a loud THUNK fill the quiet forest."
+            "You threw the stick at the dog, and the dog received [_damageRoll]. 
+            the dog has [EnemyHP] HP left."
+            "The dog falls limp at your last attack, and there was no sign that it is about to get up. You approach the dog, and you could hear it softly breathing."
+            menu ToBeatOrNot:
+                "You have done well -- Finish it."
+                "Kill the dog":
+                    "You take the stick that has made the dog pass out, and smashed it against the dog's head until you could not hear anything besides the silence of the forest."
+                    "Once more, everything was still."
+                    "{b}{i}Kill: The blood pools and drains under the grass.{/b}{/i}"
+                    return
+                "Leave the dog alone":
+                    "You left the dog alone, and continued on your journey. As you walk away, you can't help but think that you have ruined fetching for someone..."
+                    "{b}{i}Tolerance: Hit it with a stick enough, and it will leave you alone.{/b}{/i}"
+                    return
 
         "You threw the stick at the dog, and the dog received [_damageRoll]. 
         the dog has [EnemyHP] HP left. You could tell that this made it angry."
@@ -73,6 +89,7 @@ label LargeStickFailure:
         $ PlayerHP = 0
     "You try to pick up the stick, but you feel a crack in your body when you try to lift it. 
     Something broke inside you, and it was the fault of your hubris."
+    call CainHurt
     "You take [_damageRoll] damage from the stick, and have [PlayerHP] HP left"
 
     # Death from stick
@@ -86,20 +103,20 @@ label FetchBoy:
         call LargeStickGamble from _call_LargeStickGamble_1
         
         if _largeSuccess:
-            call DogLeaves
+            call DogLeaves from _call_DogLeaves_2
             "You threw the stick towards the woods, and the dog runs towards the direction of the thrown stick."
             "You don’t believe that the dog will be able to bring the large stick back. 
             However, after a few minutes, you could see that a small tuff of white emerge 
             from the bushes."
-            call DogComesBack
+            call DogComesBack from _call_DogComesBack
             "The small dog drags the large stick out of the bush, and slowly brings you the large stick back."
         else:
             jump LargeStickFailure
     else:
-        call DogLeaves
+        call DogLeaves from _call_DogLeaves_3
         "You threw the stick towards the woods, and the dog runs towards the direction of the thrown stick."
         "The dog fetches the stick and brings it back, with a wagging tail."
-        call DogComesBack
+        call DogComesBack from _call_DogComesBack_1
     
     $ didDogBringBackStick = True
     jump PlayerMove

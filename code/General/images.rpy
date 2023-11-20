@@ -19,6 +19,12 @@ transform Right:
     xalign 1.0
     yalign 1.0
 
+# Character getting 
+transform Stagger:
+    linear 0.1 xoffset 20
+    linear 0.1 xoffset -20
+    linear 0.1 xoffset 0
+
 ################################################################################
 # Character Appearance Calls
 ################################################################################
@@ -36,6 +42,11 @@ label CainLeft:
 label CainDeath:
     hide CHcain with easeoutbottom
     return
+
+label CainHurt:
+    show CHcain at Stagger
+    return
+
 
 ################################################################################
 # Dog
@@ -58,3 +69,8 @@ label DogLeaves:
 
 label DogComesBack:
     show CHDog at Right with easeinright
+    return
+
+label DogHurt:
+    show CHDog at Stagger
+    return
