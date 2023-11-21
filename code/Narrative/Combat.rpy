@@ -2,7 +2,7 @@
 ################################################################################
 # Attack flags
 ################################################################################
-default isDogAngry = False              # di you make the dog angry?
+default isDogAngry = False              # did you make the dog angry?
 ################################################################################
 # Calm Dog flags 
 ################################################################################
@@ -14,7 +14,7 @@ default areYouABigSnake = False         # did you just admit you are a snake and
 ## One of Us route #############################################################
 default didYouApproachTheDog = False    # did you try to approach the dog?
 default areYouADogToo = False           # did you lower yourself and make the dog question you?
-default areYouLyingDown= False          # are you lying down?
+default areYouLyingDown = False          # are you lying down?
 default didYouBark = False              # did you just bark at the dog?
 ################################################################################
 # Fetch Dog flags 
