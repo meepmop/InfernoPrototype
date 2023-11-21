@@ -122,7 +122,7 @@ label FetchBoy:
     $ didDogBringBackStick = True
     jump PlayerMove
 
-label TugOfWar:
+label TugOfWar: # Conversion End
     "You attempt to grab the stick away from the dog, but its bite is tightened on the wood. As you try to pull the stick 
     away from the dog, you could see the dog’s tail vigorously wag at your attempts."
     "You could feel the dog pull at the stick, as you try to pull the stick away from it. It does not want to relent the stick to you."
