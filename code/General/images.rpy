@@ -19,11 +19,16 @@ transform Right:
     xalign 1.0
     yalign 1.0
 
-# Character getting 
+# Character getting hurt
 transform Stagger:
     linear 0.1 xoffset 20
     linear 0.1 xoffset -20
     linear 0.1 xoffset 0
+
+transform LowerDown:
+    xalign 0.0
+    yalign 1.0
+    linear 1.0 ypos 1.25
 
 ################################################################################
 # Character Appearance Calls
@@ -45,6 +50,10 @@ label CainDeath:
 
 label CainHurt:
     show CHcain at Stagger
+    return
+
+label CainLowerDown:
+    show CHcain at LowerDown
     return
 
 

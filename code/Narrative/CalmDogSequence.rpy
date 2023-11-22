@@ -96,6 +96,7 @@ label ApproachDog:
     $ didYouApproachTheDog = True
     jump EnemyAttack
 label LowerYourself:
+    call CainLowerDown
     "You carefully lowered your body to its height, being aware of your descent to not 
     scare the dog. Due to the small size of the dog, you had to lay on your belly to 
     be the size of the dog."
