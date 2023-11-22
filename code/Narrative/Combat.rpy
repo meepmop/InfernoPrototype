@@ -2,7 +2,7 @@
 ################################################################################
 # Attack flags
 ################################################################################
-default isDogAngry = False              # di you make the dog angry?
+default isDogAngry = False              # did you make the dog angry?
 ################################################################################
 # Calm Dog flags 
 ################################################################################
@@ -14,7 +14,7 @@ default areYouABigSnake = False         # did you just admit you are a snake and
 ## One of Us route #############################################################
 default didYouApproachTheDog = False    # did you try to approach the dog?
 default areYouADogToo = False           # did you lower yourself and make the dog question you?
-default areYouLyingDown= False          # are you lying down?
+default areYouLyingDown = False          # are you lying down?
 default didYouBark = False              # did you just bark at the dog?
 ################################################################################
 # Fetch Dog flags 
@@ -26,7 +26,12 @@ default didDogBringBackStick = False    # did the dog bring back the stick you t
 ################################################################################
 
 label PlayerMove:
+
+    call CombatMusic from _call_CombatMusic
     if PlayerHP <= 0:
+        call CainDeath from _call_CainDeath
+        stop music fadeout 1.0
+        show black with fade
         "You could feel the world turning dark and grow cold..."
         "No... not again..."
         return
@@ -81,6 +86,8 @@ label PlayerMove:
             "Grab the stick from the dog" if didDogBringBackStick:
                 jump TugOfWar
     # You killed the Dog
+    call DogDeath from _call_DogDeath_2    # Dog Death animation
+    call KillMusic from _call_KillMusic
     "You took your sword, and dealt the killing blow on the small beast. The large blade pierces 
     the small body; the dog lies limp on the ground surrounded in a pool of blood"
     "A deserving end for a worthless creature."

@@ -20,6 +20,7 @@ label CainAttackRoll:
         # if EnemyHp is lower than 0, make it 0
         if EnemyHP <= 0:
             $ EnemyHP = 0
+        call DogHurt
     else:
         "Attack Roll: [_rollOutcome] fail"
     return
@@ -36,6 +37,7 @@ label DogAttackRoll:
         # if PlayerHp is lower than 0, make it 0
         if PlayerHP <= 0:
             $ PlayerHP = 0
+        call CainHurt
         "The attack lands! You take [_damageRoll] damage and have [PlayerHP] HP left"
         $ _didEnemyLandAttack = True
     else:
@@ -56,7 +58,7 @@ label BarkCalls:
 
 # large stick rolls for large stick causes
 label LargeStickGamble:
-    call DiceRoll
+    call DiceRoll from _call_DiceRoll_7
     $ _rollOutcome = d20
     $ _damageRoll = d10
 

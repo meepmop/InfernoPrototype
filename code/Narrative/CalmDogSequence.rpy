@@ -48,6 +48,7 @@ label SnakeFool:
     jump PlayerMove
 
 label ChaseDog: # Tolerance end
+    call DogLeaves from _call_DogLeaves
     "You hone in at the dog, and ready yourself for a dash. However, as you attempt to 
     make a step towards the dog, you see it dash inside the bushes."
     "You run up to the bush, and find the dog has left the premises."
@@ -67,6 +68,7 @@ label BiteDog:  # Tolerance and kill end
     With the small dog in your arms, you take a large bite at the dog."
     "You couldn’t bite hard, due to its hair that stops you from going deeper in. 
     However, it seemed powerful enough as the dog yowls in pain and faints."
+    call DogDeath from _call_DogDeath
     "In your hands, the dog falls limp, but you could feel its panicked breaths from the movement of its stomach."
 
     menu ToKillOrNot:
@@ -94,11 +96,12 @@ label ApproachDog:
     $ didYouApproachTheDog = True
     jump EnemyAttack
 label LowerYourself:
+    call CainLowerDown
     "You carefully lowered your body to its height, being aware of your descent to not 
     scare the dog. Due to the small size of the dog, you had to lay on your belly to 
     be the size of the dog."
     "The dog perks his ears and tail up at your new size. 
-    It stopped barking and looks at you as it twist its head."
+    It stopped barking and looks at you as it tilts its head."
 
     $ areYouADogToo = True
     jump PlayerMove
@@ -123,6 +126,7 @@ label SniffHand:    # conversion and kill end
         "Grab the dog and bash its head to the ground":
             "You wait for the right moment to strike. As the dog nears your palm, 
             you grab the dog with your hand, and bashed the small creature against the ground."
+            call DogDeath from _call_DogDeath_1
             "You could not sense any motion from the dog, as it lies crushed on the ground 
             like a swatted bug."
             "{b}{i}Kill: swat the dog.{/i}{/b}"
