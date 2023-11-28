@@ -50,6 +50,7 @@ label CainDeath:
 
 label CainHurt:
     show CHcain at Stagger
+    call DamageSound
     return
 
 label CainLowerDown:
@@ -82,4 +83,5 @@ label DogComesBack:
 
 label DogHurt:
     show CHDog at Stagger
+    call DamageSound
     return

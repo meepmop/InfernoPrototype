@@ -560,6 +560,7 @@ screen about():
             text _("Special Thanks:\n   DMG - Mayhem 2023\n   Rhys Hughes\n   Cindy Lui\n   Apoorv Taneja\n")
 
             ## Sounds
+            text _("Sounds from RPG Maker MV\nMusic by Alkakrab\n")
             ## gui.about is usually set in options.rpy.
             if gui.about:
                 text "[gui.about!t]\n"

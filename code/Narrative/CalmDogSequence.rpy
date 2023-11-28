@@ -53,6 +53,7 @@ label ChaseDog: # Tolerance end
     make a step towards the dog, you see it dash inside the bushes."
     "You run up to the bush, and find the dog has left the premises."
     "Remember its face, Little One. We will find it again, and make it pay for its mockery."
+    call ToleranceMusic
     "{b}Tolerance{/b}: Dog Runs Away"
     return
 
@@ -76,12 +77,14 @@ label BiteDog:  # Tolerance and kill end
         "End the dog":
             "You take the small head of the dog, and twist it. You could hear a sharp crack and the breathing stops."
             "A small death, for a small nuisance."
+            call KillMusic
             "{b}{i}Kill: killed the dog through a twist.{/b}{/i}"
             return
         "Set the dog down and leave":
             "You set the dog down; you could see the dog peek out with one eye and closes, 
             as you placed the dog on the floor"
             "You move away and try to find your way around the forest, with a new found talent of being venomous."
+            call ToleranceMusic
             "{b}{i}Tolerance: You poisoned the dog?{/b}{/i}"
             return
 
@@ -129,6 +132,7 @@ label SniffHand:    # conversion and kill end
             call DogDeath from _call_DogDeath_1
             "You could not sense any motion from the dog, as it lies crushed on the ground 
             like a swatted bug."
+            call KillMusic
             "{b}{i}Kill: swat the dog.{/i}{/b}"
             return
         # Conversion end
@@ -142,6 +146,7 @@ label SniffHand:    # conversion and kill end
             "You could feel your heart fill with joy, as the soft fur embraces your hand. 
             In your joy, you could feel something poison inside you."
             "We are disappointed at you."
+            call ConversionMusic
             "{b}{i}Conversion: Befriend through traditional means.{/i}{/b}"
             return
 
@@ -171,5 +176,6 @@ label DogAssWhiff:  # conversion end
     as the dog turns away and gave you a lively bark. The dog runs around you in circles, 
     and it has seemed that you have gained a new friend."
     "No friend is worth the cost of your pride, Little One…"
+    call ConversionMusic
     "{b}{i}Conversion: You sniffed a dog’s ass.{/i}{/b}"
     return

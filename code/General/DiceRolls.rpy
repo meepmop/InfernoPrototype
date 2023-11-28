@@ -23,6 +23,7 @@ label CainAttackRoll:
         call DogHurt
     else:
         "Attack Roll: [_rollOutcome] fail"
+        call EvadeSound
     return
 
 # Dog attack rolls
@@ -41,6 +42,7 @@ label DogAttackRoll:
         "The attack lands! You take [_damageRoll] damage and have [PlayerHP] HP left"
         $ _didEnemyLandAttack = True
     else:
+        call EvadeSound
         "The dog misses."
     return
 

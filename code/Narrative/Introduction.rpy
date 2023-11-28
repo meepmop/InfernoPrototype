@@ -93,7 +93,6 @@ label SurpriseAttack:
 
     if ChrStr >= _rollOutcome:
         "You slowly approached the tuff, and slashed at the fluff. The tuff quickly dodged your attack, but not fast enough that it avoided your blade."
-        call DogHurt
         "The dog takes the hit and receives [_damageRoll]; the dog has [EnemyHP] HP left."
         "How unfortunate. It must suffer now for its disobedience."
     else:

@@ -87,10 +87,10 @@ label PlayerMove:
                 jump TugOfWar
     # You killed the Dog
     call DogDeath from _call_DogDeath_2    # Dog Death animation
-    call KillMusic from _call_KillMusic
     "You took your sword, and dealt the killing blow on the small beast. The large blade pierces 
     the small body; the dog lies limp on the ground surrounded in a pool of blood"
     "A deserving end for a worthless creature."
+    call KillMusic from _call_KillMusic
     "{b}{i}Kill: slashed the dog to death.{/i}{/b}"
     return
 

@@ -32,7 +32,7 @@ label DogToRiver:   # Kill End
     and hurry towards the sound."
     "When you reached the river, you do not see the dog but only a stick that quickly flows away from you. 
     There’s only the sound of the rushing river to fill the dead woods."
-   
+    call KillMusic
     "{b}{i}Kill: killed the dog using nature.{/b}{/i}"
     return
 
@@ -45,6 +45,7 @@ label StickAtDog:   # Kill end
             "Due to the large size of the stick, the dog got crushed by the stick and 
             you could not see a hint of white underneath the log. In the silence, you 
             could hear the woods cheer at the act of your destruction."
+            call KillMusic
             "{b}{i}Kill: the dog is crushed under the large stick.{/b}{/i}"
         else:
             jump LargeStickFailure 
@@ -65,10 +66,12 @@ label StickAtDog:   # Kill end
                 "Kill the dog":
                     "You take the stick that has made the dog pass out, and smashed it against the dog's head until you could not hear anything besides the silence of the forest."
                     "Once more, everything was still."
+                    call KillMusic
                     "{b}{i}Kill: The blood pools and drains under the grass.{/b}{/i}"
                     return
                 "Leave the dog alone":
                     "You left the dog alone, and continued on your journey. As you walk away, you can't help but think that you have ruined fetching for someone..."
+                    call ToleranceMusic
                     "{b}{i}Tolerance: Hit it with a stick enough, and it will leave you alone.{/b}{/i}"
                     return
 
@@ -137,6 +140,7 @@ label TugOfWar: # Conversion End
             "The dog walks away and barks at you when you watch it move away. It quickly approaches you and bites at your cape, pulling it 
             towards the direction of its journey. You follow the dog, as it leashes you with your cape."
             "This is an embarrassment, Little One, for you have become the dog’s pet."
+            call ConversionMusic
             "{b}{i}Conversion: Become Beta{/i}{/b}"
             return
         "Win this tug of war":
